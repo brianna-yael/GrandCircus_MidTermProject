@@ -1,0 +1,6 @@
+c:\users\bjm37\documents\visual studio 2017\Projects\GrandCircus_MidtermProject\GrandCircus_MidtermProject\bin\Debug\GrandCircus_MidtermProject.exe.config
+c:\users\bjm37\documents\visual studio 2017\Projects\GrandCircus_MidtermProject\GrandCircus_MidtermProject\bin\Debug\GrandCircus_MidtermProject.exe
+c:\users\bjm37\documents\visual studio 2017\Projects\GrandCircus_MidtermProject\GrandCircus_MidtermProject\bin\Debug\GrandCircus_MidtermProject.pdb
+c:\users\bjm37\documents\visual studio 2017\Projects\GrandCircus_MidtermProject\GrandCircus_MidtermProject\obj\Debug\GrandCircus_MidtermProject.csprojResolveAssemblyReference.cache
+c:\users\bjm37\documents\visual studio 2017\Projects\GrandCircus_MidtermProject\GrandCircus_MidtermProject\obj\Debug\GrandCircus_MidtermProject.exe
+c:\users\bjm37\documents\visual studio 2017\Projects\GrandCircus_MidtermProject\GrandCircus_MidtermProject\obj\Debug\GrandCircus_MidtermProject.pdb
