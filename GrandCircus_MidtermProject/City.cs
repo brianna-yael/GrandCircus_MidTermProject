@@ -22,7 +22,7 @@ namespace MidtermProject
             Console.WriteLine("Name your city:");
             name = Console.ReadLine();
             water = 10;
-            food = 100;
+            food = 10;
             houses = pop;
             for (int i = 0; i < pop; i++)
             {
@@ -192,6 +192,11 @@ namespace MidtermProject
             water += calculateWaterPerTurn();
             printStats();
 
+            if (GetPop() > 9)
+            {
+                Console.WriteLine("Your village has reached a population of 10; YOU WIN!!!");
+            }
+            else
             if (GetPop() > 0)
             {
                 if (houses > GetPop())
@@ -265,7 +270,7 @@ namespace MidtermProject
                 }
                 //Check for Cholera
                 Random rand = new Random();
-                int choleraAppears = rand.Next(0, 3);
+                int choleraAppears = rand.Next(0, 21);
                 if (choleraAppears == 0)
                 {
                     Cholera();
