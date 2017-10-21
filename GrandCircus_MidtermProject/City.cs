@@ -94,6 +94,44 @@ namespace MidtermProject
             villagers.Remove(p);
         }
 
+        public void InfectWater()
+        {
+            water = 0;
+        }
+
+        public void InfectFood()
+        {
+            food = 0;
+        }
+
+        public void Cholera() //Make Disease occur that has a small percent chance of killing a villager, spoiling food, or spoiling water
+        {
+            if (GetPop() > 0)
+            {
+                string[] choleraTarget = { "villager", "water", "food" };
+                Random r = new Random();
+                int selection = r.Next(0, 3);
+                string choice = choleraTarget[selection];
+                switch (choice)
+                {
+                    case "villager":
+                        Console.WriteLine("Cholera has infected the village and {0} has died!", villagers.ElementAt(0).name);
+                        killPerson(villagers.ElementAt(0));
+                        break;
+                    case "water":
+                        InfectWater();
+                        Console.WriteLine("Cholera has infected the village and wiped out you water supply!");
+                        break;
+                    case "food":
+                        InfectFood();
+                        Console.WriteLine("Cholera has infected the village and wiped out your food supply!");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         public int calculateWaterPerTurn()
         {
             int total = 0;
@@ -213,6 +251,14 @@ namespace MidtermProject
                     //Remove dead people from the list 
                     //The list.remove() method searches by item and removes any matches
                     villagers.Remove(p);
+                }
+
+                //Check for Cholera
+                Random rand = new Random();
+                int choleraAppears = rand.Next(0, 3);
+                if (choleraAppears == 0)
+                {
+                    Cholera();
                 }
                 turn();
             }
