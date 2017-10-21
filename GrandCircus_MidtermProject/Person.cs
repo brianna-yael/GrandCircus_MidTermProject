@@ -36,6 +36,7 @@ namespace MidtermProject
             Console.WriteLine("4) Build a well (Gives 1 gallon of water per day -- Requires 6 wood)");
             Console.WriteLine("5) Scavenge (find random resource)");
             Console.WriteLine("6) Build a Castle(Requires 20 wood))");
+            Console.WriteLine("7) Gather Food");
             string input = Console.ReadLine();
             switch (input)
             {
@@ -56,6 +57,9 @@ namespace MidtermProject
                     break;
                 case "6":
                     BuildCastle();
+                    break;
+                case "7":
+                    GatherFood();
                     break;
                 default:
                     Console.WriteLine("I'm sorry I didn't understand, let's try again");
@@ -138,8 +142,6 @@ namespace MidtermProject
                 case "food":
                     Console.WriteLine(name + " found 1 unit of food");
                     homeCity.food++;
-                    //Console.Writeline(name + " found "+ amount +" " + choice);
-                    //findFood(amount);
                     break;
                 default:
                     Scavenge();
@@ -147,6 +149,13 @@ namespace MidtermProject
 
             }
 
+        }
+
+        public void GatherFood()
+        {
+            homeCity.IncreaseFood();
+            homeCity.printFood();
+            homeCity.Pause();
         }
 
         public bool Drink()

@@ -17,7 +17,6 @@ namespace MidtermProject
         private int day = 0;
         private List<Person> villagers = new List<Person>();
         private List<WaterSource> waterSources = new List<WaterSource>();
-        
 
         public City(int pop)
         {
@@ -98,9 +97,52 @@ namespace MidtermProject
             }
         }
 
+        public void IncreaseFood()
+        {
+            food++;
+        }
+
         public void killPerson(Person p)
         {
             villagers.Remove(p);
+        }
+
+        public void InfectWater()
+        {
+            water = 0;
+        }
+
+        public void InfectFood()
+        {
+            food = 0;
+        }
+
+        public void Cholera() //Make Disease occur that has a small percent chance of killing a villager, spoiling food, or spoiling water
+        {
+            if (GetPop() > 0)
+            {
+                string[] choleraTarget = { "villager", "water", "food" };
+                Random r = new Random();
+                int selection = r.Next(0, 3);
+                string choice = choleraTarget[selection];
+                switch (choice)
+                {
+                    case "villager":
+                        Console.WriteLine("Cholera has infected the village and {0} has died!", villagers.ElementAt(0).name);
+                        killPerson(villagers.ElementAt(0));
+                        break;
+                    case "water":
+                        InfectWater();
+                        Console.WriteLine("Cholera has infected the village and wiped out you water supply!");
+                        break;
+                    case "food":
+                        InfectFood();
+                        Console.WriteLine("Cholera has infected the village and wiped out your food supply!");
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         public int calculateWaterPerTurn()
@@ -168,15 +210,17 @@ namespace MidtermProject
             Console.WriteLine("It's the start of day " + day + "!");
             water += calculateWaterPerTurn();
             printStats();
-
             if (castle > 0)
             {
                 Console.WriteLine();
                 Console.WriteLine("You win");
                 Console.WriteLine("You made it to day " + day);
             }
-            else
-            if (GetPop() > 0)
+            else if (GetPop() > 9)
+            {
+                Console.WriteLine("Your village has reached a population of 10; YOU WIN!!!");
+            }
+            else if (GetPop() > 0)
             {
                 if (houses > GetPop())
                 {
@@ -193,7 +237,6 @@ namespace MidtermProject
                     Person p = villagers[i];
                     p.Work();
                 }
-
 
 
                 //Drinking loop
@@ -235,15 +278,56 @@ namespace MidtermProject
                     //The list.remove() method searches by item and removes any matches
                     villagers.Remove(p);
                 }
+
+                if (GetPop() > 0)
+                {
+                    //Check for barbarians
+                    int villagersMurdered = CheckForBarbarians();
+                    if (villagersMurdered > 0)
+                    {
+                        for (int i = 0; i < villagersMurdered; i++)
+                        {
+                            villagers.RemoveAt(0);
+                        }
+                    }
+                }
+                //Check for Cholera
+                Random rand = new Random();
+                int choleraAppears = rand.Next(0, 21);
+                if (choleraAppears == 0)
+                {
+                    Cholera();
+                }
                 turn();
             }
-            
+
             //Current endgame condition
             else
             {
                 Console.WriteLine();
                 Console.WriteLine("Everyone in " + name + " is dead, sorry!");
                 Console.WriteLine("You made it to day " + day);
+            }
+        }
+
+
+        public int CheckForBarbarians()
+        {
+            Random rnd = new Random();
+            int barbariansAppear = rnd.Next(0, 15);
+            int villagersKilled = 0;
+
+            if (barbariansAppear > 0)
+            {
+                Console.WriteLine("You are safe, no barbarians appeared this turn.");
+                return villagersKilled;
+                
+            }
+            else
+            {
+                villagersKilled = rnd.Next(1, (villagers.Count + 1));
+                Console.WriteLine("A horde of wild barbarians appears and kills " + villagersKilled + " villagers.");
+                return villagersKilled;
             }
         }
     }
