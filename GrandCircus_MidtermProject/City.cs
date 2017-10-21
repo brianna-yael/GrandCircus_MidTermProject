@@ -12,15 +12,18 @@ namespace MidtermProject
         private int houses = 1;
         private int wood = 0;
         public int water { get; set; }
+        public int food { get; set; }
         private int day = 0;
         private List<Person> villagers = new List<Person>();
         private List<WaterSource> waterSources = new List<WaterSource>();
+        
 
         public City(int pop)
         {
             Console.WriteLine("Name your city:");
             name = Console.ReadLine();
             water = 10;
+            food = 10;
             houses = pop;
             for (int i = 0; i < pop; i++)
             {
@@ -103,6 +106,11 @@ namespace MidtermProject
             Console.WriteLine(name + " has " + water + " gallons of water");
         }
 
+        public void printFood()
+        {
+            Console.WriteLine(name + " has " + food + " units of food");
+        }
+
         public void printPop()
         {
             Console.WriteLine("Your city has " + villagers.Count + " Population");
@@ -123,6 +131,7 @@ namespace MidtermProject
             printPop();
             printWater();
             printWood();
+            printFood();
             printHouses();
             Pause();
         }
@@ -161,7 +170,7 @@ namespace MidtermProject
 
 
 
-                //Eating loop
+                //Drinking loop
                 foreach (Person p in villagers)
                 {
                     if (p.Drink() == false)
@@ -180,8 +189,29 @@ namespace MidtermProject
                     //The list.remove() method searches by item and removes any matches
                     villagers.Remove(p);
                 }
+
+                //Eating loop
+                foreach (Person p in villagers)
+                {
+                    if (p.Eat() == false)
+                    {
+                        //If they don't eat they die 
+                        //We build up a seperate list since you can't modify 
+                        //a list in a foreach loop
+                        deadVillagers.Add(p);
+                    }
+                }
+                printFood();
+                Pause();
+                foreach (Person p in deadVillagers)
+                {
+                    //Remove dead people from the list 
+                    //The list.remove() method searches by item and removes any matches
+                    villagers.Remove(p);
+                }
                 turn();
             }
+            //Current endgame condition
             else
             {
                 Console.WriteLine();

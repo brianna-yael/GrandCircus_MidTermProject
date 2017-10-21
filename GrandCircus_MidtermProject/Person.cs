@@ -150,5 +150,22 @@ namespace MidtermProject
             }
             return survive;
         }
+
+        public bool Eat()
+        {
+            bool survive;
+            if (homeCity.food > 0)
+            {
+                survive = true;
+                homeCity.food--;
+                Console.WriteLine(name + " eats one food");
+            }
+            else
+            {
+                survive = false;
+                Console.WriteLine(name + " couldn't find any food! They starved to death!");
+            }
+            return survive;
+        }
     }
 }
