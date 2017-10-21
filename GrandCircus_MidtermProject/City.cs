@@ -16,7 +16,7 @@ namespace MidtermProject
         private int day = 0;
         private List<Person> villagers = new List<Person>();
         private List<WaterSource> waterSources = new List<WaterSource>();
-        
+
 
         public City(int pop)
         {
