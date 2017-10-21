@@ -13,6 +13,7 @@ namespace MidtermProject
         private int wood = 0;
         public int water { get; set; }
         public int food { get; set; }
+        private int castle = 0;
         private int day = 0;
         private List<Person> villagers = new List<Person>();
         private List<WaterSource> waterSources = new List<WaterSource>();
@@ -58,9 +59,9 @@ namespace MidtermProject
 
         public void BuildHouse()
         {
-            if (wood >= 5)
+            if (wood >= 20)
             {
-                wood -= 5;
+                wood -= 20;
                 houses++;
                 Console.WriteLine("You Built a house!");
             }
@@ -81,6 +82,19 @@ namespace MidtermProject
             else
             {
                 Console.WriteLine("You didn't build a well! You need at least 6 wood.");
+            }
+        }
+        public void BuildCastle()
+        {
+            if (wood >= 3)
+            {
+                wood -= 3;
+                castle++;
+                Console.WriteLine("You have built a castle");
+            }
+            else
+            {
+                Console.WriteLine("You cannot build a castle you need at least 20 wood.");
             }
         }
 
@@ -125,6 +139,10 @@ namespace MidtermProject
         {
             Console.WriteLine("Your city has " + houses + " houses");
         }
+        public void printCastle()
+        {
+            Console.WriteLine("Your city has " + castle + " castles");
+        }
 
         public void printStats()
         {
@@ -133,6 +151,7 @@ namespace MidtermProject
             printWood();
             printFood();
             printHouses();
+            printCastle();
             Pause();
         }
 
@@ -150,6 +169,13 @@ namespace MidtermProject
             water += calculateWaterPerTurn();
             printStats();
 
+            if (castle > 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("You win");
+                Console.WriteLine("You made it to day " + day);
+            }
+            else
             if (GetPop() > 0)
             {
                 if (houses > GetPop())
@@ -211,6 +237,7 @@ namespace MidtermProject
                 }
                 turn();
             }
+            
             //Current endgame condition
             else
             {

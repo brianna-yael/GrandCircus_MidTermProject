@@ -35,6 +35,7 @@ namespace MidtermProject
             Console.WriteLine("3) Build a house (Requires 5 wood)");
             Console.WriteLine("4) Build a well (Gives 1 gallon of water per day -- Requires 6 wood)");
             Console.WriteLine("5) Scavenge (find random resource)");
+            Console.WriteLine("6) Build a Castle(Requires 20 wood))");
             string input = Console.ReadLine();
             switch (input)
             {
@@ -52,6 +53,9 @@ namespace MidtermProject
                     break;
                 case "5":
                     Scavenge();
+                    break;
+                case "6":
+                    BuildCastle();
                     break;
                 default:
                     Console.WriteLine("I'm sorry I didn't understand, let's try again");
@@ -101,10 +105,15 @@ namespace MidtermProject
             homeCity.BuildWell();
             homeCity.Pause();
         }
+        public void BuildCastle()
+        {
+            homeCity.BuildCastle();
+            homeCity.Pause();
+        }
 
         public void Scavenge()
         {
-            string[] resources = { "wood", "water", "watersource", "nothing", "nothing", "death" };
+            string[] resources = { "wood", "water", "watersource", "nothing", "nothing", "death","food" };
             int r = rng.Next(resources.Count());
             string choice = resources[r];
             int amount = rng.Next(2, 6);
@@ -125,6 +134,12 @@ namespace MidtermProject
                 case "death":
                     Console.WriteLine(name + " died");
                     homeCity.killPerson(this);
+                    break;
+                case "food":
+                    Console.WriteLine(name + " found 1 unit of food");
+                    homeCity.food++;
+                    //Console.Writeline(name + " found "+ amount +" " + choice);
+                    //findFood(amount);
                     break;
                 default:
                     Scavenge();
@@ -167,5 +182,6 @@ namespace MidtermProject
             }
             return survive;
         }
+
     }
 }
