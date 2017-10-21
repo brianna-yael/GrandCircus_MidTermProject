@@ -23,7 +23,7 @@ namespace MidtermProject
             Console.WriteLine("Name your city:");
             name = Console.ReadLine();
             water = 10;
-            food = 10;
+            food = 100;
             houses = pop;
             for (int i = 0; i < pop; i++)
             {
@@ -168,8 +168,7 @@ namespace MidtermProject
                     p.Work();
                 }
 
-
-
+                
                 //Drinking loop
                 foreach (Person p in villagers)
                 {
@@ -209,6 +208,20 @@ namespace MidtermProject
                     //The list.remove() method searches by item and removes any matches
                     villagers.Remove(p);
                 }
+
+                if (GetPop() > 0)
+                {
+                    //Check for barbarians
+                    int villagersMurdered = CheckForBarbarians();
+                    if (villagersMurdered > 0)
+                    {
+                        for (int i = 0; i < villagersMurdered; i++)
+                        {
+                            villagers.RemoveAt(0);
+                        }
+                    }
+                }
+
                 turn();
             }
             //Current endgame condition
@@ -217,6 +230,27 @@ namespace MidtermProject
                 Console.WriteLine();
                 Console.WriteLine("Everyone in " + name + " is dead, sorry!");
                 Console.WriteLine("You made it to day " + day);
+            }
+        }
+
+
+        public int CheckForBarbarians()
+        {
+            Random rnd = new Random();
+            int barbariansAppear = rnd.Next(0, 15);
+            int villagersKilled = 0;
+
+            if (barbariansAppear > 0)
+            {
+                Console.WriteLine("You are safe, no barbarians appeared this turn.");
+                return villagersKilled;
+                
+            }
+            else
+            {
+                villagersKilled = rnd.Next(1, (villagers.Count + 1));
+                Console.WriteLine("A horde of wild barbarians appears and kills " + villagersKilled + " villagers.");
+                return villagersKilled;
             }
         }
     }
