@@ -140,6 +140,8 @@ namespace MidtermProject
 
         public void GatherFood()
         {
+            homeCity.IncreaseFood();
+            homeCity.printFood();
             homeCity.Pause();
         }
 
@@ -156,6 +158,23 @@ namespace MidtermProject
             {
                 survive = false;
                 Console.WriteLine(name + " couldn't find a drink! They died of thirst!");
+            }
+            return survive;
+        }
+
+        public bool Eat()
+        {
+            bool survive;
+            if (homeCity.food > 0)
+            {
+                survive = true;
+                homeCity.food--;
+                Console.WriteLine(name + " eats one food");
+            }
+            else
+            {
+                survive = false;
+                Console.WriteLine(name + " couldn't find any food! They starved to death!");
             }
             return survive;
         }

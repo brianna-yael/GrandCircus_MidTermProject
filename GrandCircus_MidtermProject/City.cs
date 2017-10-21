@@ -84,6 +84,11 @@ namespace MidtermProject
             }
         }
 
+        public void IncreaseFood()
+        {
+            food++;
+        }
+
         public void killPerson(Person p)
         {
             villagers.Remove(p);
