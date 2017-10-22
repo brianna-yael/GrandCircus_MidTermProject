@@ -118,7 +118,7 @@ namespace MidtermProject
         public void Scavenge()
         {
             string[] resources = { "wood", "water", "watersource", "nothing", "nothing", "death","food" };
-            int r = rng.Next(resources.Count());
+            int r = rng.Next(0,7);
             string choice = resources[r];
             int amount = rng.Next(2, 6);
             //Console.WriteLine(choice);
@@ -140,8 +140,8 @@ namespace MidtermProject
                     homeCity.killPerson(this);
                     break;
                 case "food":
-                    Console.WriteLine(name + " found 1 unit of food");
-                    homeCity.food++;
+                    Console.WriteLine(name + " found " + amount + " " + choice);
+                    homeCity.food += amount;
                     break;
                 default:
                     Scavenge();
@@ -150,14 +150,12 @@ namespace MidtermProject
             }
 
         }
-
         public void GatherFood()
         {
             homeCity.IncreaseFood();
             homeCity.printFood();
             homeCity.Pause();
         }
-
         public bool Drink()
         {
             bool survive;
