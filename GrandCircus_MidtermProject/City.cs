@@ -58,9 +58,9 @@ namespace MidtermProject
 
         public void BuildHouse()
         {
-            if (wood >= 20)
+            if (wood >= 5)
             {
-                wood -= 20;
+                wood -= 5;
                 houses++;
                 Console.WriteLine("You Built a house!");
             }
@@ -85,9 +85,9 @@ namespace MidtermProject
         }
         public void BuildCastle()
         {
-            if (wood >= 3)
+            if (wood >= 20)
             {
-                wood -= 3;
+                wood -= 20;
                 castle++;
                 Console.WriteLine("You have built a castle");
             }
