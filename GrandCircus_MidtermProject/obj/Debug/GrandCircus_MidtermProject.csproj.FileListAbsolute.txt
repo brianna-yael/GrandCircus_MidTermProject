@@ -17,3 +17,9 @@ C:\Users\Karina Lopez\source\repos\GrandCircus_MidtermProject2\GrandCircus_Midte
 C:\Users\Karina Lopez\source\repos\GrandCircus_MidtermProject2\GrandCircus_MidtermProject\obj\Debug\GrandCircus_MidtermProject.csproj.CoreCompileInputs.cache
 C:\Users\Karina Lopez\source\repos\GrandCircus_MidtermProject2\GrandCircus_MidtermProject\obj\Debug\GrandCircus_MidtermProject.exe
 C:\Users\Karina Lopez\source\repos\GrandCircus_MidtermProject2\GrandCircus_MidtermProject\obj\Debug\GrandCircus_MidtermProject.pdb
+C:\Users\lorei_000\Desktop\Midterm Temp\GrandCircus_MidtermProject\bin\Debug\GrandCircus_MidtermProject.exe.config
+C:\Users\lorei_000\Desktop\Midterm Temp\GrandCircus_MidtermProject\bin\Debug\GrandCircus_MidtermProject.exe
+C:\Users\lorei_000\Desktop\Midterm Temp\GrandCircus_MidtermProject\bin\Debug\GrandCircus_MidtermProject.pdb
+C:\Users\lorei_000\Desktop\Midterm Temp\GrandCircus_MidtermProject\obj\Debug\GrandCircus_MidtermProject.csprojResolveAssemblyReference.cache
+C:\Users\lorei_000\Desktop\Midterm Temp\GrandCircus_MidtermProject\obj\Debug\GrandCircus_MidtermProject.exe
+C:\Users\lorei_000\Desktop\Midterm Temp\GrandCircus_MidtermProject\obj\Debug\GrandCircus_MidtermProject.pdb

@@ -1,0 +1,17 @@
+Question One: As you search through the source code note any bugs you find. How do you think
+you could fix them?
+
+Answers: 
+
+-One thing that we noticed is that the program will accept the village or the villagers not having a name if you accidentally enter through the line where you would name it. Then, for the rest of the program, it will just display their name as a blank space. We think that you could fix that by either using if/else statements to check to see if the name of the city or person is != "" , or you could use try/catch blocks and throw a new exception if name = "". In either case, if the name did equal "", then the user would be prompted to enter the name again.
+
+Question Two: Refactor: is there a class/method that could be cleaner? How would you suggest
+cleaning it up?
+
+Answer:
+
+-One class that could definitely use some cleaning up is city. First off, City doesn't necessarily need to be the place where all of the daily work tasks are defined and where the turn is run. It seems like City should probably just contain the information about the city, and the work tasks & turn running should be put somewhere else (like maybe a class called "Day" or something). Since that was where everything is, that is where we added the majority of our methods as well though. 
+
+-Inside of the City class, the turn() method could also stand to be broken down a bit futher. The logic for each of the loops (such as drinking loop, eating loop, etc...) could be moved into their own methods and then just called from turn().
+
+-Also, the UI could use some cleaning up. It makes you hit enter too often and tends to display information in a way that is choppy and hard to keep track of sometimes. The output of how much water and food was consumed each day could be condensed in to one output block. You could remove the pause method after the city information is displayed each day as well so that it prints out the city information and the turn menu all at once.
